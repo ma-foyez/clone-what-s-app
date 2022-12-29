@@ -1,9 +1,8 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import React from 'react'
+import moment from 'moment';
 
 export default function ChatListItem({ chat }) {
-  // const chatData = JSON.parse(chat);
-  console.log('chat.name', chat.name)
   return (
     <View style={styles.container}>
       <Image
@@ -13,7 +12,7 @@ export default function ChatListItem({ chat }) {
       <View style={styles.content}>
         <View style={styles.row}>
           <Text style={styles.name}>{chat.user.name}</Text>
-          <Text style={styles.subTitle}>8:30</Text>
+          <Text style={styles.subTitle}>{chat.lastMessage.createdAt}</Text>
         </View>
         <Text style={styles.subTitle} numberOfLines={2}>{chat.lastMessage.text}</Text>
       </View>
