@@ -1,14 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import ChatListItem from './src/components/ChatListItem/ChatListItem';
 
 export default function App() {
+  const data = require('./assets/data/chats.json');
+
   return (
-    <View style={styles.container}>
-      <ChatListItem />
-      <ChatListItem />
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.container}>
+          {
+            data.map((chat, index) => (
+              <ChatListItem chat={chat} key={index + 1} />
+            ))
+          }
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+
   );
 }
 

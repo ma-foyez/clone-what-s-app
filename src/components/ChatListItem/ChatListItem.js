@@ -1,19 +1,21 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import React from 'react'
 
-export default function ChatListItem() {
+export default function ChatListItem({ chat }) {
+  // const chatData = JSON.parse(chat);
+  console.log('chat.name', chat.name)
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={{ uri: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80" }} />
+        source={{ uri: chat.user.image }} />
 
       <View style={styles.content}>
         <View style={styles.row}>
-          <Text style={styles.name}>M.A Fayez</Text>
+          <Text style={styles.name}>{chat.user.name}</Text>
           <Text style={styles.subTitle}>8:30</Text>
         </View>
-        <Text style={styles.subTitle} numberOfLines={2}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum odit sit maxime sequi accusantium nisi adipisci voluptate sunt expedita. Quos ex quasi dignissimos esse porro perferendis non eius delectus consequuntur.</Text>
+        <Text style={styles.subTitle} numberOfLines={2}>{chat.lastMessage.text}</Text>
       </View>
     </View>
   )
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
   },
-  row:{
+  row: {
     flexDirection: 'row',
     marginBottom: 5
   },
