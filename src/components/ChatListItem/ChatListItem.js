@@ -1,6 +1,5 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import React from 'react'
-import moment from 'moment';
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
